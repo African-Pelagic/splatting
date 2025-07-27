@@ -3,9 +3,9 @@ import torch
 from typing import Union
 import os
 
-from splatting import cpu as splatting_cpu
+from . import cpu as splatting_cpu
 if torch.cuda.is_available():
-    from splatting import cuda as splatting_cuda
+    from . import cuda as splatting_cuda
 else:
     splatting_cuda = None
 
