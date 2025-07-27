@@ -26,13 +26,15 @@ ext_modules = [
     ),
 ]
 
-if torch.cuda.is_available():
-    ext_modules.append(
-        cpp_extension.CUDAExtension(
-            "splatting.cuda",
-            ["cuda/splatting_cuda.cpp", "cuda/splatting.cu"],
-        ),
-    )
+
+# we're building without a gpu
+# but running with one
+ext_modules.append(
+    cpp_extension.CUDAExtension(
+        "splatting.cuda",
+        ["cuda/splatting_cuda.cpp", "cuda/splatting.cu"],
+    ),
+)
 
 setup(
     name="splatting",
